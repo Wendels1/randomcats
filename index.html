@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cats</title>
+</head>
+<body>
+    <h1>Veja um Gato Aleatório!</h1>
+    <img id="catImage" src="" alt="Gato Aleatório">
+    <button onclick="getRandomCat()">Ver Outro Gato</button>
+
+    <script>
+        function getRandomCat() {
+            fetch('https://api.thecatapi.com/v1/images/search')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('catImage').src = data[0].url;
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+
+        getRandomCat();
+    </script>
+</body>
+</html>
